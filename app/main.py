@@ -1,3 +1,13 @@
+# Battlesnake 2019: shhnake
+#
+# CREATORS: - Cameron Day
+#			- Carl Marais
+#
+# PURPOSES: - Be snake.
+#			- Survive.
+#			- Kill other snakes.
+#			- Be the very best - the best there ever was.
+
 import json
 import os
 import random
