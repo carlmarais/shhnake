@@ -43,6 +43,7 @@ def ping():
 @bottle.post('/start')
 def start():
 	data = bottle.request.json
+	print data
 
 	"""
 	TODO: If you intend to have a stateful snake AI,
@@ -69,12 +70,7 @@ def move():
 	directions = ['up', 'down', 'left', 'right']
 	direction = random.choice(directions)
 
-	#return move_response(direction)
-	return {
-		'move': direction,
-		'taunt': 'random.choice(taunts)',
-	}
-
+	return move_response(direction)
 
 
 @bottle.post('/end')
