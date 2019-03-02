@@ -54,7 +54,7 @@ def move():
 
 	print(json.dumps(data))
 
-	ourSnake = data['you']
+	ourSnake = data['board']['you']
 	ourHead = ourSnake['body'][0]
 	ourTail = ourSnake['body'][-1]
 	
