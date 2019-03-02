@@ -338,7 +338,7 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes, depth
 	print dirCounter
 	print maxDir
 	if dirCounter[maxDir] > 0:
-		return max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]
+		return [max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]]
 	else:
 		return remainingDirs
 
