@@ -12,6 +12,7 @@ import json
 import os
 import random
 import bottle
+import operator
 
 from api import ping_response, start_response, move_response, end_response
 
@@ -285,8 +286,56 @@ def checkHeadCollision(data, directions, ourHead, ourSnake, otherSnakes):
 
 	return directions
 
-def bfs(data, directions, ourHead, ourSnake, otherSnakes):
-	return directions
+def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes, depth):
+
+	# remainingDirs is an array of directions e.g. ['down', 'up']
+
+	dirCounter = {
+		'up': 0,
+		'down': 0,
+		'left': 0,
+		'right': 0
+	}
+
+	for dir in remainingDirs:
+		currDirection = True
+		tempHeadData = get_temp_head(ourHead, dir)
+		tempHead['x'] = tempHeadData[0]
+		tempHead['y'] = tempHeadData[1]
+
+
+		while currDirection:
+			# Eliminate dangerous moves.
+			tempDirections = [dir]
+			tempDirections = checkWall(data, tempDirections, tempHead['x'], tempHead['y'])
+			# print "Directions after checkWall: " + str(directions)
+			tempDirections = checkSelf(data, tempDirections, tempHead['x'], tempHead['y'], ourSnake)
+			# print "Directions after checkSelf: " + str(directions)
+			tempDirections = tailAvoidance(data, tempDirections, otherSnakes, tempHead, ourTail)
+			# print "Directions after tailAvoidance: " + str(directions)
+			tempDirections = checkHeadCollision(data, tempDirections, tempHead, ourSnake, otherSnakes)
+			# print "Directions after checkHeadCollision: " + str(directions)
+
+			if dir in tempDirections:
+				dirCounter[dir] += 1
+				tempHead = get_temp_head(tempHead, dir)
+			else:
+				currDirection = False
+
+	return max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]
+
+
+def get_temp_head(ourHead, direction):
+	temp_head_x = ourHead['x']
+	temp_head_y = ourHead['y']
+	if direction == 'left'
+		return [temp_head_x - 1, temp_head_y]
+	elif direction == 'right'
+		return [temp_head_x + 1, temp_head_y]
+	elif direction == 'up'
+		return [temp_head_x, temp_head_y - 1]
+	elif direction == 'down'
+		return [temp_head_x, temp_head_y + 1]
 
 
 @bottle.post('/end')
