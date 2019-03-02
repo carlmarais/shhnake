@@ -41,7 +41,7 @@ def ping():
 def start():
 	data = bottle.request.json
 
-	print(json.dumps(data))
+	#print(json.dumps(data))
 
 	color = "#00FF00"
 
@@ -87,9 +87,6 @@ def move():
 
 	# For debugging purposes.
 	print direction
-
-	directions = ['up', 'down', 'left', 'right']
-	direction = random.choice(directions)
 
 	return move_response(direction)
 
@@ -294,7 +291,7 @@ def end():
 	TODO: If your snake AI was stateful,
 		clean up any stateful objects here.
 	"""
-	print(json.dumps(data))
+	#print(json.dumps(data))
 
 	return end_response()
 
