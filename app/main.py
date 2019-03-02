@@ -301,6 +301,7 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 		'x': -1,
 		'y': -1
 	}
+	tempDirections = []
 
 	for dir in remainingDirs:
 		currDirection = True
@@ -308,10 +309,9 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 		tempHead['x'] = tempHeadData[0]
 		tempHead['y'] = tempHeadData[1]
 
-
 		while currDirection:
 			# Eliminate dangerous moves.
-			tempDirections = [dir]
+			tempDirections.append(dir)
 			tempDirections = checkWall(data, tempDirections, tempHead['x'], tempHead['y'])
 			# print "Directions after checkWall: " + str(directions)
 			tempDirections = checkSelf(data, tempDirections, tempHead['x'], tempHead['y'], ourSnake)
@@ -326,6 +326,7 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 				tempHead = get_temp_head(tempHead, dir)
 			else:
 				currDirection = False
+				tempDirections.remove(dir)
 
 	return max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]
 
