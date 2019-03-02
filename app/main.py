@@ -285,6 +285,9 @@ def checkHeadCollision(data, directions, ourHead, ourSnake, otherSnakes):
 
 	return directions
 
+def bfs(data, directions, ourHead, ourSnake, otherSnakes):
+	return directions
+
 
 @bottle.post('/end')
 def end():
