@@ -90,7 +90,7 @@ def move():
 
 	# For debugging purposes.
 	print "Final return is: "
-	print direction
+	print directions
 
 	return move_response(str(random.choice(directions)))
 
