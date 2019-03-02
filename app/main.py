@@ -90,7 +90,7 @@ def move():
 	# For debugging purposes.
 	print direction
 
-	return move_response(direction)
+	return move_response(direction[0])
 
 def checkWall(data, directions, our_head_x, our_head_y):
 	# Remove directions that result in snake running into walls.
@@ -306,7 +306,7 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 	for dir in remainingDirs:
 		currDirection = True
 		tempHead = get_temp_head(ourHead, dir)
-	
+
 		print tempHead['x']
 
 		while currDirection:
