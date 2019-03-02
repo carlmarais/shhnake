@@ -308,6 +308,8 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 		tempHeadData = get_temp_head(ourHead, dir)
 		tempHead['x'] = tempHeadData[0]
 		tempHead['y'] = tempHeadData[1]
+		print "Type of tempHead[x] is: "
+		print tempHead['x']
 
 		while currDirection:
 			# Eliminate dangerous moves.
