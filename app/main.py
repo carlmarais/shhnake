@@ -297,6 +297,10 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 		'left': 0,
 		'right': 0
 	}
+	tempHead = {
+		'x': -1,
+		'y': -1
+	}
 
 	for dir in remainingDirs:
 		currDirection = True
