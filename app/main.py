@@ -57,12 +57,12 @@ def move():
 	ourSnake = data['you']
 	ourHead = ourSnake['body'][0]
 	ourTail = ourSnake['body'][-1]
-	
+
 	otherSnakes = []
 
 	for snake in data['board']['snakes']:
 		otherSnakes.append(snake)
-	
+
 	foodList = data['board']['food']
 
 	# Eliminate dangerous moves.
@@ -101,7 +101,7 @@ def checkWall(data, directions, our_head_x, our_head_y):
 		directions.remove('right')
 	elif 'left' in directions and head_x == 0:
 		directions.remove('left')
-	
+
 	# Y Directions
 	if 'down' in directions and head_y == (data['board']['height'] - 1):
 		directions.remove('down')
@@ -135,13 +135,16 @@ def findFood(data, directions, ourHead, foodList):
 	# Remove directions that result in snake taking longer to reach nearest food.
 	# Consider |head_x - food_x| + |head_y - food_y|
 
+	if len(foodList) == 0:
+		return directions
+
 	min_dist = 10000
 
 	head_x = ourHead['x']
 	head_y = ourHead['y']
 
 	for i in range(len(foodList)):
-		
+
 		food_i_x = foodList[i]['x']
 		food_i_y = foodList[i]['y']
 
@@ -278,7 +281,7 @@ def checkHeadCollision(data, directions, ourHead, ourSnake, otherSnakes):
 			counts[remove_dir] = 0
 			remove_dir = max(counts, key=counts.get)
 			if remove_dir in directions and counts[remove_dir] > 0:
-				directions.remove(remove_dir)			
+				directions.remove(remove_dir)
 
 	return directions
 
