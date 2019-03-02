@@ -328,6 +328,8 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 				currDirection = False
 				tempDirections.remove(dir)
 
+	print "The max direction is: "
+	print max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]
 	return max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]
 
 
