@@ -88,9 +88,10 @@ def move():
 		direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes)
 
 	# For debugging purposes.
+	print "Final return is: "
 	print direction
 
-	return move_response(direction[0])
+	return move_response('right')
 
 def checkWall(data, directions, our_head_x, our_head_y):
 	# Remove directions that result in snake running into walls.
