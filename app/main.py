@@ -305,10 +305,8 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 
 	for dir in remainingDirs:
 		currDirection = True
-		tempHeadData = get_temp_head(ourHead, dir)
-		tempHead['x'] = tempHeadData[0]
-		tempHead['y'] = tempHeadData[1]
-		print "Type of tempHead[x] is: "
+		tempHead = get_temp_head(ourHead, dir)
+	
 		print tempHead['x']
 
 		while currDirection:
@@ -336,16 +334,24 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 
 
 def get_temp_head(ourHead, direction):
-	temp_head_x = ourHead['x']
-	temp_head_y = ourHead['y']
+	tempHead = {
+		'x': -1,
+		'y': -1
+	}
+	tempHead['x'] = ourHead['x']
+	tempHead['y'] = ourHead['y']
 	if direction == 'left':
-		return [temp_head_x - 1, temp_head_y]
+		tempHead['x'] -= 1
+		return tempHead
 	elif direction == 'right':
-		return [temp_head_x + 1, temp_head_y]
+		tempHead['x'] += 1
+		return tempHead
 	elif direction == 'up':
-		return [temp_head_x, temp_head_y - 1]
+		tempHead['y'] -= 1
+		return tempHead
 	elif direction == 'down':
-		return [temp_head_x, temp_head_y + 1]
+		tempHead['y'] += 1
+		return tempHead
 
 
 @bottle.post('/end')
