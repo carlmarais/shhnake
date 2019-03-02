@@ -82,7 +82,7 @@ def move():
 	snake_lengths = [len(snake['body']) for snake in otherSnakes]
 
 	if ourSnake['health'] <= 1.5*(data['board']['width'] + data['board']['height']) or len(ourSnake['body']) <= min(snake_lengths):
-		direction = [findFood(data, directions, ourHead, foodList)]
+		direction = findFood(data, directions, ourHead, foodList)
 	else:
 		direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes, 3)
 		# direction = random.choice(directions)
@@ -172,7 +172,7 @@ def findFood(data, directions, ourHead, foodList):
 	if 'down' in directions:
 		choices['down'] = abs(head_x - closest_food_x - 1) + abs(head_y - closest_food_y + 1)
 
-	return min(choices, key=choices.get)
+	return [min(choices, key=choices.get)]
 
 def tailAvoidance(data, directions, otherSnakes, ourHead, ourTail):
 	# Avoid collisions with other snake bodies.
@@ -337,7 +337,7 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes, depth
 	print dirCounter
 	print maxDir
 	if dirCounter[maxDir] > 0:
-		return [max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]]
+		return [maxDir]
 	else:
 		return remainingDirs
 
