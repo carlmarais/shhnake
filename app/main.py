@@ -52,7 +52,7 @@ def start():
 def move():
 	data = bottle.request.json
 
-	print(json.dumps(data))
+	#print(json.dumps(data))
 
 	ourSnake = data['you']
 	ourHead = ourSnake['body'][0]
