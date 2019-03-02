@@ -85,7 +85,7 @@ def move():
 		direction = findFood(data, directions, ourHead, foodList)
 	else:
 		# direction = random.choice(directions)
-		direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes)
+		direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes, 3)
 
 	# For debugging purposes.
 	print "Final return is: "
@@ -288,7 +288,7 @@ def checkHeadCollision(data, directions, ourHead, ourSnake, otherSnakes):
 
 	return directions
 
-def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
+def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes, depth):
 
 	# remainingDirs is an array of directions e.g. ['down', 'up']
 
@@ -311,7 +311,7 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 		print "tempHead is: "
 		print tempHead['x']
 
-		while currDirection:
+		while currDirection <= depth:
 			# Eliminate dangerous moves.
 			tempDirections.append(dir)
 			tempDirections = checkWall(data, tempDirections, tempHead['x'], tempHead['y'])
