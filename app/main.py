@@ -119,7 +119,7 @@ def checkSelf(data, directions, our_head_x, our_head_y, ourSnake):
 	head_x = our_head_x
 	head_y = our_head_y
 
-	for i in range(len(data['board']['you']['body'])):
+	for i in range(len(data['you']['body'])):
 		body_x = ourSnake['body'][i]['x']
 		body_y = ourSnake['body'][i]['y']
 
