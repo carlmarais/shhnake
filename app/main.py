@@ -308,6 +308,7 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 		currDirection = True
 		tempHead = get_temp_head(ourHead, dir)
 
+		print "tempHead is: "
 		print tempHead['x']
 
 		while currDirection:
