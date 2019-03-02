@@ -328,13 +328,13 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes, depth
 def get_temp_head(ourHead, direction):
 	temp_head_x = ourHead['x']
 	temp_head_y = ourHead['y']
-	if direction == 'left'
+	if direction == 'left':
 		return [temp_head_x - 1, temp_head_y]
-	elif direction == 'right'
+	elif direction == 'right':
 		return [temp_head_x + 1, temp_head_y]
-	elif direction == 'up'
+	elif direction == 'up':
 		return [temp_head_x, temp_head_y - 1]
-	elif direction == 'down'
+	elif direction == 'down':
 		return [temp_head_x, temp_head_y + 1]
 
 
