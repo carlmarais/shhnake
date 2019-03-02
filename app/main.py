@@ -308,11 +308,12 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes, depth
 	for dir in remainingDirs:
 		currDirection = True
 		tempHead = get_temp_head(ourHead, dir)
+		depthCounter = 0
 
 		print "tempHead is: "
 		print tempHead['x']
 
-		while currDirection <= depth:
+		while currDirection and depthCounter < depth:
 			# Eliminate dangerous moves.
 			tempDirections.append(dir)
 			tempDirections = checkWall(data, tempDirections, tempHead['x'], tempHead['y'])
@@ -323,6 +324,8 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes, depth
 			# print "Directions after tailAvoidance: " + str(directions)
 			tempDirections = checkHeadCollision(data, tempDirections, tempHead, ourSnake, otherSnakes)
 			# print "Directions after checkHeadCollision: " + str(directions)
+
+			depthCounter += 1
 
 			if dir in tempDirections:
 				dirCounter[dir] += 1
