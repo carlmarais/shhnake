@@ -86,13 +86,13 @@ def move():
 	# else:
 	# 	# direction = random.choice(directions)
 	# 	direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes, 3)
-	direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes, 3)
+	directions = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes, 3)
 
 	# For debugging purposes.
 	print "Final return is: "
 	print direction
 
-	return move_response(str(direction))
+	return move_response(str(random.choice(directions)))
 
 def checkWall(data, directions, our_head_x, our_head_y):
 	# Remove directions that result in snake running into walls.
@@ -333,11 +333,14 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes, depth
 			else:
 				currDirection = False
 
-
+	maxDir = max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]
 	print "The max direction is: "
 	print dirCounter
-	print max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]
-	return max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]
+	print maxDir
+	if dirCounter[maxDir] > 0:
+		return max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]
+	else:
+		return remainingDirs
 
 
 def get_temp_head(ourHead, direction):
