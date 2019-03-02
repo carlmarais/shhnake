@@ -81,11 +81,12 @@ def move():
 
 	snake_lengths = [len(snake['body']) for snake in otherSnakes]
 
-	if ourSnake['health'] <= 2*(data['board']['width'] + data['board']['height']) or len(ourSnake['body']) <= min(snake_lengths):
-		direction = findFood(data, directions, ourHead, foodList)
-	else:
-		# direction = random.choice(directions)
-		direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes, 3)
+	# if ourSnake['health'] <= 2*(data['board']['width'] + data['board']['height']) or len(ourSnake['body']) <= min(snake_lengths):
+	# 	direction = findFood(data, directions, ourHead, foodList)
+	# else:
+	# 	# direction = random.choice(directions)
+	# 	direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes, 3)
+	direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes, 3)
 
 	# For debugging purposes.
 	print "Final return is: "
