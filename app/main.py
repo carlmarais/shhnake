@@ -43,10 +43,12 @@ def start():
 	data = bottle.request.json
 
 	#print(json.dumps(data))
+	
+	color = '#42d1ab'
+	headType = 'evil'
+	tailType = 'bolt'
 
-	color = "#00FF00"
-
-	return start_response(color)
+	return start_response(color, headType, tailType)
 
 
 @bottle.post('/move')
