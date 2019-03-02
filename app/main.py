@@ -84,7 +84,8 @@ def move():
 	if ourSnake['health'] <= 2*(data['board']['width'] + data['board']['height']) or len(ourSnake['body']) <= min(snake_lengths):
 		direction = findFood(data, directions, ourHead, foodList)
 	else:
-		direction = random.choice(directions)
+		# direction = random.choice(directions)
+		direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes)
 
 	# For debugging purposes.
 	print direction
@@ -286,7 +287,7 @@ def checkHeadCollision(data, directions, ourHead, ourSnake, otherSnakes):
 
 	return directions
 
-def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes, depth):
+def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes):
 
 	# remainingDirs is an array of directions e.g. ['down', 'up']
 
