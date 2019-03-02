@@ -93,6 +93,26 @@ def move():
 
 	return move_response(direction)
 
+def checkWall(data, directions, our_head_x, our_head_y):
+	# Remove directions that result in snake running into walls.
+
+	head_x = our_head_x
+	head_y = our_head_y
+
+	# X Directions
+	if 'right' in directions and head_x == (data['board']['width'] - 1):
+		directions.remove('right')
+	elif 'left' in directions and head_x == 0:
+		directions.remove('left')
+	
+	# Y Directions
+	if 'down' in directions and head_y == (data['board']['height'] - 1):
+		directions.remove('down')
+	elif 'up' in directions and head_y == 0:
+		directions.remove('up')
+
+	return directions
+
 def checkSelf(data, directions, our_head_x, our_head_y, ourSnake):
 	# Remove directions that result in snake running into self.
 
