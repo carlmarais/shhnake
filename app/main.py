@@ -91,7 +91,7 @@ def move():
 	print "Final return is: "
 	print direction
 
-	return move_response('right')
+	return move_response(str(direction))
 
 def checkWall(data, directions, our_head_x, our_head_y):
 	# Remove directions that result in snake running into walls.
