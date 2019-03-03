@@ -8,8 +8,8 @@ def drawMap(board, snakes, ourSnake):
 		for point in snake['body']:
 			map[point['y']][point['x']] = 1
 
-	for point in ourSnake['body']:
-		map[point['y']][point['x']] = 2
+	#for point in ourSnake['body']:
+	#	map[point['y']][point['x']] = 2
 
 	for point in board['food']:
 		map[point['y']][point['x']] = 3
