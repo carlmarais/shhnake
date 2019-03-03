@@ -85,15 +85,17 @@ def move():
 	snake_lengths = [len(snake['body']) for snake in otherSnakes]
 
 	if ourSnake['health'] <= 1.7*(data['board']['width'] + data['board']['height']) or len(ourSnake['body']) <= min(snake_lengths) - 2:
+		print 'Searching for food.'
 		direction = findFood(data, directions, ourHead, foodList)
 	else:
+		print 'Practicing safe search.'
 		direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes, 3)
 		# direction = random.choice(directions)
 
 	print "Final return is: " + str(direction)
 
 	# For debugging purposes.
-	dm.drawMap(data['board'], otherSnakes, ourSnake)
+	#dm.drawMap(data['board'], otherSnakes, ourSnake)
 
 	return move_response(str(random.choice(direction)))
 
