@@ -93,7 +93,7 @@ def move():
 	print "Final return is: " + str(direction)
 
 	# For debugging purposes.
-	dm.draw_map(data['board'], otherSnakes, ourSnake)
+	dm.drawMap(data['board'], otherSnakes, ourSnake)
 
 	return move_response(str(random.choice(direction)))
 
