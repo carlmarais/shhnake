@@ -1,4 +1,4 @@
-def drawMap(board, snakes, our_snake):
+def drawMap(board, snakes, ourSnake):
 	map = [[0 for i in range(board['height'])] for i in range(board['width'])]
 	
 	for snake in snakes:
@@ -8,7 +8,7 @@ def drawMap(board, snakes, our_snake):
 		for point in snake['body']:
 			map[point['y']][point['x']] = 1
 
-	for point in our_snake['body']:
+	for point in ourSnake['body']:
 		map[point['y']][point['x']] = 2
 
 	for point in board['food']:
@@ -34,6 +34,8 @@ def prettyPrinter(map):
 		print ''
 		print divider
 
+'''
+# DEBUGGING
 snakes = [{'health': 5, 'body': [{'x': 0, 'y': 0}, 
 								 {'x': 0, 'y': 1}, 
 								 {'x': 0, 'y': 2}, 
@@ -49,3 +51,4 @@ ourSnake = {'body': [{'x': 0, 'y': 7},
 					{'x': 0, 'y': 6}]}
 
 drawMap(board, snakes, ourSnake)
+'''

@@ -15,6 +15,7 @@ import bottle
 import operator
 
 from api import ping_response, start_response, move_response, end_response
+import draw_map as dm
 
 @bottle.route('/')
 def index():
@@ -89,9 +90,10 @@ def move():
 		direction = bfs_line(data, directions, ourHead, ourTail, ourSnake, otherSnakes, 3)
 		# direction = random.choice(directions)
 
+	print "Final return is: " + str(direction)
+
 	# For debugging purposes.
-	print "Final return is: "
-	print direction
+	dm.draw_map(data['board'], otherSnakes, ourSnake)
 
 	return move_response(str(random.choice(direction)))
 
