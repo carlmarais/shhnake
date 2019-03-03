@@ -72,13 +72,13 @@ def move():
 	# Eliminate dangerous moves.
 	directions = ['up', 'down', 'left', 'right']
 	directions = checkWall(data, directions, ourHead['x'], ourHead['y'])
-	print "Directions after checkWall: " + str(directions)
+	#print "Directions after checkWall: " + str(directions)
 	directions = checkSelf(data, directions, ourHead['x'], ourHead['y'], ourSnake)
-	print "Directions after checkSelf: " + str(directions)
+	#print "Directions after checkSelf: " + str(directions)
 	directions = tailAvoidance(data, directions, otherSnakes, ourHead, ourTail)
-	print "Directions after tailAvoidance: " + str(directions)
+	#print "Directions after tailAvoidance: " + str(directions)
 	directions = checkHeadCollision(data, directions, ourHead, ourSnake, otherSnakes)
-	print "Directions after checkHeadCollision: " + str(directions)
+	#print "Directions after checkHeadCollision: " + str(directions)
 
 	# If snake's health is below designated threshold, seek food. Else, pick random direction.
 
@@ -315,8 +315,8 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes, depth
 		tempHead = get_temp_head(ourHead, dir)
 		depthCounter = 0
 
-		print "tempHead is: "
-		print tempHead['x']
+		#print "tempHead is: "
+		#print tempHead['x']
 
 		while currDirection and depthCounter < depth:
 			# Eliminate dangerous moves.
@@ -339,9 +339,9 @@ def bfs_line(data, remainingDirs, ourHead, ourTail, ourSnake, otherSnakes, depth
 				currDirection = False
 
 	maxDir = max(dirCounter.iteritems(), key=operator.itemgetter(1))[0]
-	print "The max direction is: "
-	print dirCounter
-	print maxDir
+	#print "The max direction is: "
+	#print dirCounter
+	#print maxDir
 	if dirCounter[maxDir] > 0:
 		return [maxDir]
 	else:
