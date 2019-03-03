@@ -83,6 +83,7 @@ def move():
 	# If snake's health is below designated threshold, seek food. Else, pick random direction.
 
 	snake_lengths = [len(snake['body']) for snake in otherSnakes]
+	print snake_lengths
 
 	if ourSnake['health'] <= 1.7*(data['board']['width'] + data['board']['height']) or len(ourSnake['body']) <= min(snake_lengths) - 2:
 		print 'Searching for food.'
