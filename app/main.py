@@ -62,10 +62,13 @@ def move():
 	ourHead = ourSnake['body'][0]
 	ourTail = ourSnake['body'][-1]
 
+	# Get a list of the remaining snakes. Do not include ourself or snakes with 0 health.
 	otherSnakes = []
-
 	for snake in data['board']['snakes']:
-		otherSnakes.append(snake)
+		if snake['id'] == ourSnake['id'] or snake['health'] == 0:
+			continue
+		else:
+			otherSnakes.append(snake)
 
 	foodList = data['board']['food']
 
@@ -81,9 +84,7 @@ def move():
 	#print "Directions after checkHeadCollision: " + str(directions)
 
 	# If snake's health is below designated threshold, seek food. Else, pick random direction.
-
 	snake_lengths = [len(snake['body']) for snake in otherSnakes]
-	print snake_lengths
 
 	if ourSnake['health'] <= 1.7*(data['board']['width'] + data['board']['height']) or len(ourSnake['body']) <= min(snake_lengths) - 2:
 		print 'Searching for food.'
